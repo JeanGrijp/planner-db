@@ -19,12 +19,18 @@ git clone https://github.com/JeanGrijp/planner-db.git
 cd planner-db
 ```
 
-2. Inicie os containers:
+2. (Opcional) Personalize as credenciais copiando o arquivo `.env.example`:
+```bash
+cp .env.example .env
+# Edite o arquivo .env com suas credenciais personalizadas
+```
+
+3. Inicie os containers:
 ```bash
 docker-compose up -d
 ```
 
-3. Verifique se os containers estão rodando:
+4. Verifique se os containers estão rodando:
 ```bash
 docker-compose ps
 ```
@@ -91,13 +97,19 @@ docker-compose up -d --build
 planner-db/
 ├── Dockerfile              # Imagem customizada do PostgreSQL
 ├── docker-compose.yml      # Orquestração dos serviços
+├── .env.example           # Exemplo de variáveis de ambiente
 ├── .gitignore             # Arquivos ignorados pelo Git
 └── README.md              # Documentação
 ```
 
 ### 🔒 Segurança
 
-⚠️ **IMPORTANTE:** As credenciais padrão são apenas para desenvolvimento. Em produção, use variáveis de ambiente seguras e nunca commite senhas no código.
+⚠️ **IMPORTANTE:** 
+- As credenciais padrão são apenas para desenvolvimento local.
+- **NUNCA** use essas credenciais em produção.
+- Crie um arquivo `.env` baseado no `.env.example` e defina senhas fortes.
+- O arquivo `.env` está no `.gitignore` e não será commitado.
+- Em produção, use Docker Secrets ou outras soluções de gerenciamento de segredos.
 
 ### 📝 Licença
 
